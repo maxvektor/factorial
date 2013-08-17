@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Factorial</title>
+    <script src="jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<script>
+    var factorials = []
+    function main() {
+        for (var i = 0; i < 10; i++) {
+            factorials.push(factorial(i));
+        }
+        var max = countMax();
+        var div = null;
+        for (var i = 0; i < max; i++) {
+            if (isEqual(i)) {
+                drawString(i);
+            }
+        }
+    };
+
+    function f1(x) {
+        var n = x.toString();
+        return n.length * factorials[9];
+    };
+
+
+    function countMax() {
+        var i = 1;
+        while (i <= f1(i)) {
+            i=i*10;
+        }
+        var max = f1(i)+1;
+        drawString("Max = " + max + " (> f1(x) = " + (max-1) + " )");
+        return max;
+    };
+
+    function isEqual(x) {
+        var n = x.toString();
+        var s = 0;
+        for (i in n) {
+            s += factorials[n[i]]
+            if (s > x) return false;
+        }
+
+        if (x == s) return true;
+    };
+
+    function drawString(string) {
+        var div = $("<div>").text(string);
+        $("body").append(div);
+    };
+
+    function factorial(n) {
+        return n ? n * factorial(n - 1) : 1;
+    };
+
+    $(document).ready(function () {
+        main();
+    });
+
+</script>
+</body>
+</html>
